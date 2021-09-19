@@ -2273,7 +2273,7 @@ class DagModel(Base):
             .filter(
                 cls.is_paused.is_(False),
                 cls.is_active.is_(True),
-                cls.next_dagrun_create_after <= func.now(),
+                cls.next_dagrun <= func.now(),
             )
             .order_by(cls.next_dagrun_create_after)
             .limit(cls.NUM_DAGS_PER_DAGRUN_QUERY)
